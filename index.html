@@ -283,6 +283,17 @@ a.boton:hover {
   }
 }
 </style>
+
+ <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7EBZLPDBE9');
+</script>
+
+ 
 </head>
 <body>
 
@@ -346,6 +357,22 @@ btnWhatsapp.classList.remove("disabled");
 btnFormulario.href = `https://cintandina.github.io/CintandinaPruebaEntrega/?correo=${correoFijo}`;
 btnFormulario.classList.remove("disabled");
 
+// ✅ Evento GA: clic WhatsApp
+btnWhatsapp.addEventListener("click", function () {
+  gtag('event', 'click_whatsapp', {
+    event_category: 'engagement',
+    event_label: 'boton_whatsapp'
+  });
+});
+
+// ✅ Evento GA: clic Confirmación de entrega
+btnFormulario.addEventListener("click", function () {
+  gtag('event', 'click_confirmacion_entrega', {
+    event_category: 'engagement',
+    event_label: 'boton_confirmacion_entrega'
+  });
+});
+
 // ✅ Loader al pulsar cualquier botón activo
 document.querySelectorAll("a.boton").forEach(btn => {
   btn.addEventListener("click", function (e) {
@@ -366,8 +393,10 @@ document.getElementById("cancel-loader").addEventListener("click", () => {
 </script>
 
 
+
 </body>
 </html>
+
 
 
 
